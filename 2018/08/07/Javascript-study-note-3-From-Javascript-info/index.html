@@ -10,7 +10,7 @@
   
   <title>
     
-      Tao&#39;s Blog
+      Javascript study note 3 - From Javascript.info | Tao&#39;s Blog
     
   </title>
   <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -138,62 +138,139 @@
 </header>
 
     <div id="article-banner">
-  <h2>Archives</h2>
-  <p class="post-date">文章归档</p>
+  <h2>Javascript study note 3 - From Javascript.info</h2>
+  <p class="post-date">2018-08-07</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
 </div>
-<main class="app-body" id="archives">
-  
-  
-  
-    <section class="time-section">
-  <h1 class="section-year">
-    2018
-  </h1>
-  <div class="section-list">
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"></section>
+    <!-- Tags START -->
     
+    <!-- Tags END -->
+    <!-- NAV START -->
     
-      <div class="section-list-item">
-        <a href="/2018/08/07/Javascript-study-note-3-From-Javascript-info/" class="archive-title">Javascript study note 3 - From Javascript.info</a>
-        <p class="archive-date">08-07</p>
-      </div>
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
     
-      <div class="section-list-item">
-        <a href="/2018/08/04/Javascript-study-note-2-From-Javascript-info/" class="archive-title">Javascript study note 2 - From Javascript.info</a>
-        <p class="archive-date">08-04</p>
-      </div>
+      <a class="nav-left" href="/2018/08/04/Javascript-study-note-2-From-Javascript-info/">
+        <span class="nav-arrow">← </span>
+        
+          Javascript study note 2 - From Javascript.info
+        
+      </a>
     
-      <div class="section-list-item">
-        <a href="/2018/08/04/Javascript-Study-Note/" class="archive-title">Javascript Study Note 1 - From javascript.info</a>
-        <p class="archive-date">08-04</p>
-      </div>
     
   </div>
-</section>
+
+    <!-- NAV END -->
+    
+      <!-- Gitment START -->
+      <div id="comments"></div>
+      <!-- Gitment END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
   
-    <section class="time-section">
-  <h1 class="section-year">
-    2017
-  </h1>
-  <div class="section-list">
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
     
-    
-      <div class="section-list-item">
-        <a href="/2017/03/01/hello-world/" class="archive-title">Welcome to Tao&#39;s Blog</a>
-        <p class="archive-date">03-01</p>
-      </div>
+      <ol class="nav">none</ol>
     
   </div>
-</section>
+</aside>
   
+  <!-- Catalog END -->
 </main>
 
 <script>
   (function () {
-    var url = 'http://huwangtao123.github.io/archives/2018/index.html';
-    $('#article-banner').geopattern(url);
-    $('.header').removeClass('fixed-header');
+    var url = 'http://huwangtao123.github.io/2018/08/07/Javascript-study-note-3-From-Javascript-info/';
+    var banner = 'undefined'
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+     // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+
+    // qrcode
+    var qr = new QRious({
+      element: document.getElementById('share-qrcode'),
+      value: document.location.href
+    });
+
+    // gitment
+    var gitmentConfig = "huwangtao123";
+    if (gitmentConfig !== 'undefined') {
+      var gitment = new Gitment({
+        id: "Javascript study note 3 - From Javascript.info",
+        owner: "huwangtao123",
+        repo: "huwangtao123.github.io",
+        oauth: {
+          client_id: "a6f4a29c306318a39f33",
+          client_secret: "0b85aed59bc97c88c8c36565a8b27985748015e4"
+        },
+        theme: {
+          render(state, instance) {
+            const container = document.createElement('div')
+            container.lang = "en-US"
+            container.className = 'gitment-container gitment-root-container'
+            container.appendChild(instance.renderHeader(state, instance))
+            container.appendChild(instance.renderEditor(state, instance))
+            container.appendChild(instance.renderComments(state, instance))
+            container.appendChild(instance.renderFooter(state, instance))
+            return container;
+          }
+        }
+      })
+      gitment.render(document.getElementById('comments'))
+    }
   })();
 </script>
+
     <div class="scroll-top">
   <span class="arrow-icon"></span>
 </div>

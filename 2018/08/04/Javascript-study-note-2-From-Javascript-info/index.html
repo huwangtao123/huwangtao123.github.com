@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="Personal website to track personal technical study note and life princial">
+  <meta name="keyword" content="hexo-theme">
+  
+    <link rel="shortcut icon" href="/css/images/logo.png">
+  
+  <title>
+    
+      Javascript study note 2 - From Javascript.info | Tao&#39;s Blog
+    
+  </title>
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/plugins/gitment.css">
+  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdn.bootcss.com/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+  <script src="/js/qrious.js"></script>
+<script src="/js/gitment.js"></script>
+  
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
+  
+
+
+</head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png" />
+</div>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Tao's Blog</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">Projects</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">Projects</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>Javascript study note 2 - From Javascript.info</h2>
+  <p class="post-date">2018-08-04</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><h3 id="Function"><a href="#Function" class="headerlink" title="Function"></a>Function</h3><p>A function declaraion looks like </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">name</span>(<span class="params">parameters, delimited, by, comma</span>)</span>&#123;</div><div class="line"> <span class="comment">/* code */</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">showPrimes</span>(<span class="params">n</span>) </span>&#123;</div><div class="line"></div><div class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">2</span>; i &lt; n; i++) &#123;</div><div class="line">    <span class="keyword">if</span> (!isPrime(i)) <span class="keyword">continue</span>;</div><div class="line"></div><div class="line">    alert(i);  <span class="comment">// a prime</span></div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">/Users/Tao/workspace/huwangtao123.github.io/source/_posts/Javascript-study-note<span class="number">-2</span>-From-Javascript-info.md</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">isPrime</span>(<span class="params">n</span>) </span>&#123;</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">2</span>; i &lt; n; i++) &#123;</div><div class="line">    <span class="keyword">if</span> ( n % i == <span class="number">0</span>) <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>Values passed to a function as parameters are copied to its local variables</li>
+<li>A function may access outer variable, but it works only from inside out. The code outside of the function doesn’t see its local variables</li>
+<li>A function can return a value. If it doesn’t then it result is undefined </li>
+</ul>
+<p>To make the code clean and easy to understand, it’s recommended to use mailnly local variables and parameters in the funtion, not outer variable</p>
+<p>It is always easier to understand a funtion which gets parameters, works with them and returns a result than a function which gets no parameters, but modifier outer variables as a side-effort</p>
+<h3 id="Function-experssions-and-arrows"><a href="#Function-experssions-and-arrows" class="headerlink" title="Function experssions and arrows"></a>Function experssions and arrows</h3><p>Two ways to create functions</p>
+<ul>
+<li>Function Declaration</li>
+<li>Function Expression</li>
+</ul>
+<p><strong>Callback functions</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">ask</span>(<span class="params">quesiton, yes, no</span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span> (confirm(question)) yes()</div><div class="line">  <span class="keyword">else</span> no();</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">showOk</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  alert(<span class="string">"You agreed."</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">showCancel</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  alert(<span class="string">"You canceled the execution."</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line">ask(<span class="string">"Do you agree?"</span>, showOk, showCancel);</div><div class="line"></div><div class="line">ask(<span class="string">"Do you agress"</span>, </div><div class="line">     <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;alert(<span class="string">"You agreed."</span>);&#125;, </div><div class="line">     <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;alert(<span class="string">"You canceled the execution."</span>);&#125;</div><div class="line">   );</div></pre></td></tr></table></figure>
+<p>The arguments of ask are called callback functions or just callbacks</p>
+<p>A function is a value represendting an “Action”</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> age = prompt(<span class="string">"What is your age?"</span>, <span class="number">18</span>);</div><div class="line"></div><div class="line"><span class="keyword">let</span> welcome = (age &lt; <span class="number">18</span>) ?</div><div class="line">  <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; alert(<span class="string">"Hello!"</span>);&#125; :</div><div class="line">  <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; alert(<span class="string">"Greeting!"</span>);&#125;;</div><div class="line">welcome();</div></pre></td></tr></table></figure>
+<p><strong>Arrow Function</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> sum = <span class="function">(<span class="params">a, b</span>) =&gt;</span> &#123;  <span class="comment">// the curly brace opens a multiline function</span></div><div class="line">  <span class="keyword">let</span> result = a + b;</div><div class="line">  <span class="keyword">return</span> result; <span class="comment">// if we use curly braces, use return to get results</span></div><div class="line">&#125;;</div><div class="line"></div><div class="line">alert( sum(<span class="number">1</span>, <span class="number">2</span>) ); <span class="comment">// 3</span></div></pre></td></tr></table></figure>
+<h3 id="Syntax-Cheatsheet"><a href="#Syntax-Cheatsheet" class="headerlink" title="Syntax Cheatsheet"></a>Syntax Cheatsheet</h3><p><img src="https://javascript.info/article/coding-style/code-style.png" alt="Coding Style Cheatsheet"></p>
+<h3 id="Objects"><a href="#Objects" class="headerlink" title="Objects"></a>Objects</h3><p>Object are used to store keyed collections of various data and more complex entities.<br>An object can be created with figure brackets {} with an optional list of properties. A property is a “key:value” pair, where key is a string and value can be anything</p>
+<p>Object property keys may be either of string type, or of symbol type.</p>
+<h3 id="Garbage-collection"><a href="#Garbage-collection" class="headerlink" title="Garbage collection"></a>Garbage collection</h3><ul>
+<li>Garbage collection is performed automatically. We cannot force or prevent it</li>
+<li>Objects are retained in memory while they are reachable</li>
+<li>Being referenced is not the same as being reachable(from a root). A pack of interlinked objects can become unreachable as a whole</li>
+</ul>
+<h3 id="Object-Methods"><a href="#Object-Methods" class="headerlink" title="Object Methods"></a>Object Methods</h3><ul>
+<li>Functions that are stored in object properties are called “method”.</li>
+<li>Methods allow objects to act like object.doSomething().</li>
+<li>Methods can reference the object as this</li>
+</ul>
+<p>The value of <strong>this</strong> is defined at run-time</p>
+<ul>
+<li>When a function is declared, it may use this, but that this has no value until the function is called</li>
+<li>That function can be copied between objects</li>
+<li>When a function is called in the method syntac: object.method(), the value of this during the call is object</li>
+</ul>
+<p>Arrow function are special: they have no this. when this is accessed inside an arrow function, it is taken from outside</p>
+</section>
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#javascript" >
+    <span class="tag-code">javascript</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2018/08/04/Javascript-Study-Note/">
+        <span class="nav-arrow">← </span>
+        
+          Javascript Study Note 1 - From javascript.info
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/2018/08/07/Javascript-study-note-3-From-Javascript-info/">
+        
+          Javascript study note 3 - From Javascript.info
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    
+      <!-- Gitment START -->
+      <div id="comments"></div>
+      <!-- Gitment END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Function"><span class="toc-nav-text">Function</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Function-experssions-and-arrows"><span class="toc-nav-text">Function experssions and arrows</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Syntax-Cheatsheet"><span class="toc-nav-text">Syntax Cheatsheet</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Objects"><span class="toc-nav-text">Objects</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Garbage-collection"><span class="toc-nav-text">Garbage collection</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Object-Methods"><span class="toc-nav-text">Object Methods</span></a></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'http://huwangtao123.github.io/2018/08/04/Javascript-study-note-2-From-Javascript-info/';
+    var banner = 'undefined'
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+     // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+
+    // qrcode
+    var qr = new QRious({
+      element: document.getElementById('share-qrcode'),
+      value: document.location.href
+    });
+
+    // gitment
+    var gitmentConfig = "huwangtao123";
+    if (gitmentConfig !== 'undefined') {
+      var gitment = new Gitment({
+        id: "Javascript study note 2 - From Javascript.info",
+        owner: "huwangtao123",
+        repo: "huwangtao123.github.io",
+        oauth: {
+          client_id: "a6f4a29c306318a39f33",
+          client_secret: "0b85aed59bc97c88c8c36565a8b27985748015e4"
+        },
+        theme: {
+          render(state, instance) {
+            const container = document.createElement('div')
+            container.lang = "en-US"
+            container.className = 'gitment-container gitment-root-container'
+            container.appendChild(instance.renderHeader(state, instance))
+            container.appendChild(instance.renderEditor(state, instance))
+            container.appendChild(instance.renderComments(state, instance))
+            container.appendChild(instance.renderFooter(state, instance))
+            return container;
+          }
+        }
+      })
+      gitment.render(document.getElementById('comments'))
+    }
+  })();
+</script>
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2018 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <br>
+    Theme by <a href="https://github.com/huwangtao123">vexo</a>
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<script src="/js/script.js"></script>
+  </body>
+</html>
